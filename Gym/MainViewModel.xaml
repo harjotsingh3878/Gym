@@ -1,0 +1,17 @@
+﻿<Window x:Class="Gym.MainViewModel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+        Title="MainViewModel" Height="600" Width="600">
+    <Grid>
+        <chart:ClusteredColumnChart ChartSubTitle="Population in millions" ChartTitle="Countries by population">
+            <chart:ClusteredColumnChart.Series>
+                <chart:ChartSeries DisplayMember="Name"
+                                   ItemsSource="{Binding Path=Populations}"
+                                   
+                                   ValueMember="Count" />
+
+            </chart:ClusteredColumnChart.Series>
+        </chart:ClusteredColumnChart>
+    </Grid>
+</Window>

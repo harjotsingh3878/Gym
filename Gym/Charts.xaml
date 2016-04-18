@@ -1,0 +1,86 @@
+﻿<Controls:MetroWindow x:Class="Gym.Charts"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+        Title="Charts" WindowStartupLocation="CenterScreen" WindowState="Maximized" ResizeMode="NoResize">
+    <Grid Margin="20, 0, 0, 0">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="100" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+
+            <ColumnDefinition Width="4*" />
+
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="btnBack" Width="75" Height="30" Margin="10" Content="Back" Click="btnBack_Click"/>
+            <Label Content="Data Reprentation of Preferences of Gym Members" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="15,0,0,0" FontSize="14" FontWeight="Bold"/>
+        </StackPanel>
+            <Grid Grid.Row="1" Grid.Column="0">        
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            <chart:PieChart
+            Grid.Row="0"
+			Grid.Column="0"
+            Style="{StaticResource MinimalChartStyle}"
+            ChartTitle="Preference for Gym classes"
+            ChartSubTitle="Gym Classes"
+            SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >
+                <chart:PieChart.Series>
+                    <chart:ChartSeries
+                
+                    DisplayMember="Category"
+                    ValueMember="Number"
+                    ItemsSource="{Binding Path=GymClassChart}" />
+                </chart:PieChart.Series>
+            </chart:PieChart>
+
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500" />
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+            <chart:ClusteredColumnChart Grid.Row="0" Grid.Column="0" ChartSubTitle="Fitness Goals" ChartTitle="Preference of fitness goals">
+                <chart:ClusteredColumnChart.Series>
+                    <chart:ChartSeries DisplayMember="Category"
+                                   ItemsSource="{Binding Path=FitnessGoalChart}"
+                                   
+                                   ValueMember="Number" />
+
+                </chart:ClusteredColumnChart.Series>
+            </chart:ClusteredColumnChart>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400" />
+            </Grid.ColumnDefinitions>
+
+            <chart:ClusteredBarChart Grid.Row="0" Grid.Column="0" ChartSubTitle="Sports" ChartTitle="Preference of sports">
+                <chart:ClusteredBarChart.Series>
+                    <chart:ChartSeries Width="100" DisplayMember="Category"
+                                   ItemsSource="{Binding Path=SportChart}"
+                                   
+                                   ValueMember="Number" />
+
+                </chart:ClusteredBarChart.Series>
+            </chart:ClusteredBarChart>
+        </Grid>
+    </Grid>
+</Controls:MetroWindow>

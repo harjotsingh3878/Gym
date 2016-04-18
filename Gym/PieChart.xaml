@@ -1,0 +1,22 @@
+﻿<Controls:MetroWindow x:Class="Gym.PieChart"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:chart="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+        Title="PieChart" ShowTitleBar="True" Height="300" Width="300">
+    <Grid>
+        <chart:PieChart
+        Style="{StaticResource MinimalChartStyle}"
+        ChartTitle="Minimal Pie Chart"
+        ChartSubTitle="Chart with fixed width and height"
+        SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >
+            <chart:PieChart.Series>
+                <chart:ChartSeries
+                
+                DisplayMember="Category"
+                ValueMember="Number"
+                ItemsSource="{Binding Path=Errors}" />
+            </chart:PieChart.Series>
+        </chart:PieChart>
+    </Grid>
+</Controls:MetroWindow>
